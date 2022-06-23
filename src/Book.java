@@ -1,7 +1,7 @@
 public class Book {
     private final String bookName;
     private final Author author;
-    int publishingYear;
+    private int publishingYear;
 
     public Book(String bookName, Author author, int publishingYear) {
         this.author = author;
@@ -16,7 +16,8 @@ public class Book {
     public Author getAuthor() {
         return this.author;
     }
-    public int getPublishingYear(){
+
+    public int getPublishingYear() {
         return this.publishingYear;
     }
 
@@ -24,4 +25,26 @@ public class Book {
         this.publishingYear = new_year;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        Book ob = (Book) obj;
+        if (this == obj) {
+            return true;
+        } else if (this.bookName == ob.getBookName() && (this.author.equals(ob.getAuthor())) && this.publishingYear == ob.getPublishingYear()) {
+
+            return true;
+        }
+        else return false;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return this.bookName.hashCode() + this.publishingYear;
+    }
+
+    @Override
+    public String toString() {
+        return "Name book: " + this.bookName + "Year of release " + this.publishingYear;
+    }
 }
